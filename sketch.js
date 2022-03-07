@@ -11,12 +11,14 @@ let x1 = 0;
 let y1 = 0;
 let x2 = 0;
 let y2 = 0;
+let sketchStarted = false;
 
 function setup() {
   createCanvas(500, 500);
   noStroke();
-  mic = new p5.AudioIn();
-  mic.start();
+  
+  createButton("Start").mousePressed(startSketch);
+
   frameRate(30);
   angleMode(DEGREES);
   //HeartsClass
@@ -40,7 +42,18 @@ function setup() {
   }
 }
 
+
+function startSketch() {
+  mic = new p5.AudioIn();
+  mic.start();
+
+  sketchStarted = true;
+}
+  
 function draw() {
+  
+  if(sketchStarted){
+  
   background(10+(micVar/5),139,160);
   micVar = map(mic.getLevel(), 0, 0.1,0, 245);
   //HeartsClass
@@ -54,6 +67,7 @@ function draw() {
   Mouth(0,0,0);
   Chocolatechips(250,250,200);
   Hat(192,133,82);
+}
 }
 
 function Hat(r,g,b) {
