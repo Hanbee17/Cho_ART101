@@ -1,5 +1,5 @@
-let micVar;
-let mic;
+//let micVar;
+//let mic;
 let look;
 let myHearts = [];
 let r;
@@ -17,8 +17,8 @@ function setup() {
   createCanvas(800, 800);
   noStroke();
 
-  createButton("Start").mousePressed(startSketch);
-
+  //createButton("Start").mousePressed(startSketch);
+  startSketch();
   frameRate(30);
   angleMode(DEGREES);
   //HeartsClass
@@ -43,17 +43,16 @@ function setup() {
 }
 
 function startSketch() {
-  mic = new p5.AudioIn();
-  mic.start();
-
+  //mic = new p5.AudioIn();
+  //mic.start();
   sketchStarted = true;
 }
 
 function draw() {
 
   if(sketchStarted){
-  background(10+(micVar/5),139,160);
-  micVar = map(mic.getLevel(), 0, 0.1,0, 245);
+  background(10,139,160);
+  //micVar = map(mic.getLevel(), 0, 0.1,0, 245);
 
   //HeartsClass
   for (let i = 0; i< 30; i++) {
@@ -126,7 +125,7 @@ function Eyeballs(r,g,b) {
 function Mouth(r,g,b) {
   fill(r,g,b);
   //Mouth
-  rect(width*(0.44+(micVar/100000)),height*(0.6+(micVar/20000)),width*(0.1+(micVar/10000)),height*0.03+(micVar/20),20)
+  rect(width*(0.44),height*(0.6),width*(0.1),height*(0.06),20)
 }
 
 function Chocolatechips(r,g,b) {
